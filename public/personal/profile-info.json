@@ -1,0 +1,18 @@
+{
+    "name": "Mohammad Ali",
+    "phone": "+962799220730",
+    "email": "moegts@gmail.com",
+    "supQuote": "You Don't know how much you don't know\"",
+    "quote": "\"Wisdom is a collection of Knowledge and Experience",
+    "socialTag": "moegts",
+    "skills": [
+        [
+            "Devloper",
+            "#ff7600"
+        ],
+        [
+            "Designer",
+            "#008ec8"
+        ]
+    ]
+}
