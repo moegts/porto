@@ -10,6 +10,7 @@ export default function Tasklist() {
     const [currentTasks, setCurrentTasks] = useState(null)
     const [refreshState, setRefreshState] = useState(true)
     const [agentModal, setagentModal] = useState(false)
+    const [tasksCount, setTasksCount] = useState({})
 
     const [ready, setReady] = useState(false)
     const handleCardModal = () => {
@@ -36,6 +37,7 @@ export default function Tasklist() {
         } else {
             localStorage.setItem('Agents', JSON.stringify([Agent]))
         }
+        getCount()
     }
 
     const addTaskToStorage = () => {
@@ -47,6 +49,7 @@ export default function Tasklist() {
             for (let x = 0; x < Agents.length; x++) {
                 if (Agents[x].id === selectedAgent) {
                     selectedAgent = Agents[x].name
+                    getCount()
                     break
                 }
             }
@@ -68,9 +71,12 @@ export default function Tasklist() {
                 list.push(newTask)
                 cards[x].tasks = list
                 localStorage.setItem('cards', JSON.stringify(cards))
+                getCount()
                 break
             }
         }
+        getCount()
+
     }
 
     const addCardToStorage = () => {
@@ -92,15 +98,30 @@ export default function Tasklist() {
         } else {
             localStorage.setItem('cards', JSON.stringify([card]))
         }
+        getCount()
     }
 
-
+    const getCount = () => {
+        let cards = JSON.parse(localStorage.getItem('cards'));
+        let tasksCount = 0
+        let ArchiveCount = 0
+        for (let x = 0; x < cards.length; x++) {
+            tasksCount += cards[x]["tasks"].length
+            if (cards[x]["name"] == "📦Archive") ArchiveCount = cards[x]["tasks"].length
+        }
+        setTasksCount({
+            tasksCount,
+            ArchiveCount
+        })
+    }
 
     useEffect(() => {
         if (!localStorage.getItem('cards')) {
             localStorage.setItem('cards', JSON.stringify([]))
         }
         setReady(true)
+        getCount()
+
     }, [])
 
     return (
@@ -109,6 +130,11 @@ export default function Tasklist() {
                 <title>Tasklist</title>
             </Head>
             <div className="h-[100vh] grid m-auto">
+                <div className='flex m-auto gap-2'>
+                    <p className='m-0 bg-white p-2'>All Tasks{tasksCount.tasksCount}</p>
+                    <p className='m-0 bg-white p-2'>Done Tasks{tasksCount.ArchiveCount}</p>
+                    <p className='m-0 bg-white p-2'>Active Tasks{tasksCount.tasksCount - tasksCount.ArchiveCount}</p>
+                </div>
                 <div className='w-[70rem] h-[70vh] m-auto bg-gray-600 rounded'>
                     <div className="flex justify-between bg-gray-500 rounded">
                         <h1 className='text-[2rem] m-2 grid text-white'>Tasklist</h1>
@@ -168,8 +194,8 @@ export default function Tasklist() {
                         </div>
 
                     </div>
-                    <div className="grid  grid-cols-[1fr_2fr] gap-4 m-4 select-none h-[80%]">
-                        <div className="grid bg-gray-700 rounded h-[100%] p-2">
+                    <div className="grid  grid-cols-[1fr_2fr] gap-4 m-4  h-[80%] ">
+                        <div className="grid bg-gray-700 rounded h-[100%] p-2 overflow-y-auto">
                             <div className=" grid gap-2 h-fit">
                                 {
                                     ready && JSON.parse(localStorage.getItem('cards')).map((card, index) => {
@@ -181,8 +207,8 @@ export default function Tasklist() {
                                                     console.log(activeCard);
                                                     setCurrentTasks(card.tasks)
                                                 }}
-                                                className={`w-full flex gap-4 px-2 py-1 bg-white 
-                                                ${activeCard === card.id ? 'outline-green-500 outline-2 outline outline-offset-2 bg-green-500 ' : ''}
+                                                className={`w-full flex gap-4 px-2 py-1  
+                                                ${activeCard === card.id ? 'outline-green-500 outline-2 outline outline-offset-2 bg-green-500 text-white hover:text-black ' : 'bg-[#fff]'}
                                                 rounded relative cursor-pointer hover:bg-slate-300 group`}>
                                                 <p className=''>
                                                     {card.name}
@@ -265,13 +291,15 @@ export default function Tasklist() {
                                     )
                                 }
                             </div>
-                            <button className='bg-green-500 rounded self-end' onClick={
-                                handleCardModal
-                            }>
-                                <p className='p-2 font-bold text-white'>+ Add a card</p>
-                            </button>
+                            <div className='sticky -bottom-2 bg-gray-700 w-full my-2 z-10'>
+                                <button className='bg-green-500 rounded w-full self-end' onClick={
+                                    handleCardModal
+                                }>
+                                    <p className='p-2 font-bold text-white '>+ Add a card</p>
+                                </button>
+                            </div>
                         </div>
-                        <div className=" bg-gray-700 rounded h-[100%]  p-2 justify-between">
+                        <div className=" bg-gray-700 rounded h-[100%]  p-2 justify-between overflow-y-auto">
                             {
                                 ready && refreshState && JSON.parse(localStorage.getItem('cards'))?.map((task, index) => {
                                     return (
@@ -346,11 +374,11 @@ export default function Tasklist() {
                                                                 }}
 
                                                             />
-                                                            <label htmlFor={task?.id} className='w-full grid'>
+                                                            <label className='w-full grid break-all '>
                                                                 {task?.name}
                                                             </label>
                                                             <p>
-                                                                {  task?.agent}
+                                                                {task?.agent}
                                                             </p>
                                                             <p>{
                                                                 // create mints and  hours and days ago
@@ -375,7 +403,7 @@ export default function Tasklist() {
 
                                                             }</p>
                                                             {/* delete button */}
-                                                            <button className='bg-red-500 rounded' onClick={() => {
+                                                            <button className='bg-red-500 rounded h-fit' onClick={() => {
                                                                 let cards = JSON.parse(localStorage.getItem('cards'));
                                                                 for (let x = 0; x < cards.length; x++) {
                                                                     if (cards[x].id === activeCard) {
@@ -386,7 +414,7 @@ export default function Tasklist() {
                                                                     }
                                                                 }
                                                             }}>
-                                                                <p className='text-white px-1'>X</p>
+                                                                <p className='text-white px-1 '>X</p>
                                                             </button>
 
                                                         </div>
@@ -407,22 +435,24 @@ export default function Tasklist() {
                                 )
                             }
 
-                            {
-                                ready && currentTasks && <button className='my-2 bg-green-500 rounded h-fit self-end w-full' onClick={
-                                    () => {
-                                        handleTaskModal();
-                                    }
-                                }>
-                                    <p className='p-2 font-bold text-white'>+ Add a task</p>
-                                </button>
-                            }
+                            <div className='sticky -bottom-2 bg-gray-700'>
+                                {
+                                    ready && currentTasks && <button className='my-2 bg-green-500 rounded h-fit self-end w-full ' onClick={
+                                        () => {
+                                            handleTaskModal();
+                                        }
+                                    }>
+                                        <p className='p-2 font-bold text-white '>+ Add a task</p>
+                                    </button>
+                                }
+                            </div>
 
                         </div>
                     </div>
                 </div>
                 {showCardModal &&
                     <>
-                        <div className="absolute bg-[#ffffff50] w-full h-full"
+                        <div className="absolute bg-[#ffffff50] w-full h-full z-20"
                             onClick={
                                 handleCardModal
                             }
@@ -479,7 +509,7 @@ export default function Tasklist() {
                 }
                 {showTaskModal &&
                     <>
-                        <div className="absolute bg-[#ffffff50] w-full h-full"
+                        <div className="absolute bg-[#ffffff50] w-full h-full z-20"
                             onClick={
                                 handleTaskModal
                             }
@@ -487,7 +517,7 @@ export default function Tasklist() {
                             <div />
                         </div>
                         <div className="
-                        absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2
+                        absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 z-30
                         ">
                             <div className="bg-white p-4 rounded border shadow">
                                 <div className="">
@@ -507,7 +537,7 @@ export default function Tasklist() {
                                         <label htmlFor="task-Agent" className='whitespace-nowrap'>
                                             <p className=''>Task Agent</p>
                                         </label>
-                                        
+
                                         {/* select the agent */}
                                         <select name="task-agent" id="task-agent" className='rounded w-full p-1 px-2'>
                                             <option value="none" className=''>None</option>
