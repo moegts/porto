@@ -18,8 +18,8 @@ export default function Home() {
         <title>{profileInfo.name}</title>
         <meta property="og:title" content={profileInfo.name} />
         <meta property="og:description" content={`${profileInfo.quote}, ${profileInfo.supQuote}`} />
-        <meta property="og:image" content="https://yourdomain.com/personal/porto-profile-pic.jpg" />
-        <meta property="og:url" content="https://yourdomain.com/" />
+        <meta property="og:image" content="https://www.aicentery.com/og/porto-profile-pic.jpg"/>
+        <meta property="og:url" content="https://www.aicentery.com/"/>
         <meta property="og:type" content="website" />
         <meta name="twitter:card" content="summary_large_image" />
       </Head>
