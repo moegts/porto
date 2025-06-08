@@ -1,0 +1,138 @@
+{
+  "tabnine.experimentalAutoImports": true,
+  "workbench.iconTheme": "material-icon-theme",
+  "thunder-client.codeSnippetLanguage": "cs-httpclient",
+  "editor.inlineSuggest.enabled": true,
+  "javascript.updateImportsOnFileMove.enabled": "always",
+  "github.copilot.enable": {
+    "*": true,
+    "yaml": true,
+    "plaintext": true,
+    "markdown": false,
+    "javascript": true,
+    "c": true,
+    "go": true,
+    "typescriptreact": false,
+    "scss": true,
+    "typescript": true,
+    "css": true,
+    "dart": false,
+    "javascriptreact": true,
+    "python": true
+  },
+  "cSpell.customDictionaries": {
+    "custom-dictionary-user": {
+      "name": "custom-dictionary-user",
+      "path": "~/.cspell/custom-dictionary-user.txt",
+      "addWords": true,
+      "scope": "user"
+    }
+  },
+  "editor.fontFamily": "Fira Code",
+  "editor.fontLigatures": true,
+  "editor.fontWeight": 500,
+  "settingsSync.ignoredSettings": [
+    "terminal.integrated.commandsToSkipShell"
+  ],
+  "prettier.proseWrap": "always",
+  "prettier.trailingComma": "all",
+  "bracketPairColorizer.depreciation-notice": false,
+  "prettier.useTabs": true,
+  "editor.defaultFormatter": "esbenp.prettier-vscode",
+  "editor.formatOnPaste": true,
+  "editor.formatOnSave": true,
+  "prettier.useEditorConfig": false,
+  "git.enableSmartCommit": true,
+  "settingsSync.ignoredExtensions": [
+    "thegeoffstevens.best-dark-themes-pack"
+  ],
+  "[typescriptreact]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
+  "[scss]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
+  "explorer.confirmDragAndDrop": false,
+  "[dart]": {
+    "editor.formatOnSave": true,
+    "editor.formatOnType": true,
+    "editor.rulers": [
+      80
+    ],
+    "editor.selectionHighlight": false,
+    "editor.suggest.snippetsPreventQuickSuggestions": false,
+    "editor.suggestSelection": "first",
+    "editor.tabCompletion": "onlySnippets",
+    "editor.wordBasedSuggestions": "off",
+    "editor.defaultFormatter": "Dart-Code.dart-code"
+  },
+  "[python]": {
+    "editor.defaultFormatter": "ms-python.python"
+  },
+  "github.copilot.advanced": {},
+  "workbench.productIconTheme": "fluent-icons",
+  "[javascriptreact]": {
+    "editor.defaultFormatter": "vscode.typescript-language-features"
+  },
+  "prettier.jsxBracketSameLine": true,
+  "files.autoSave": "afterDelay",
+  "[json]": {
+    "editor.defaultFormatter": "vscode.json-language-features"
+  },
+  "npm.keybindingsChangedWarningShown": true,
+  "explorer.compactFolders": false,
+  "workbench.editor.wrapTabs": true,
+  "[css]": {
+    "editor.defaultFormatter": "vscode.css-language-features"
+  },
+  "prettier.printWidth": 200,
+  "prettier.quoteProps": "preserve",
+  "prettier.resolveGlobalModules": true,
+  "sonarlint.rules": {
+    "Web:TableWithoutCaptionCheck": {
+      "level": "off"
+    },
+    "Web:S5256": {
+      "level": "off"
+    },
+    "Web:S1827": {
+      "level": "off"
+    },
+    "javascript:S4138": {
+      "level": "off"
+    },
+    "javascript:S3358": {
+      "level": "off"
+    },
+    "javascript:S6480": {
+      "level": "off"
+    }
+  },
+  "liveServer.settings.donotShowInfoMsg": true,
+  "diffEditor.ignoreTrimWhitespace": false,
+  "editor.stickyScroll.enabled": true,
+  "css.lint.unknownAtRules": "ignore",
+  "emmet.showSuggestionsAsSnippets": true,
+  "editor.suggest.showSnippets": true,
+  "editor.suggest.snippetsPreventQuickSuggestions": false,
+  "workbench.colorTheme": "Default Dark+",
+  "editor.quickSuggestionsDelay": 1,
+  "[javascript]": {
+    "editor.defaultFormatter": "vscode.typescript-language-features"
+  },
+  "[jsonc]": {
+    "editor.defaultFormatter": "vscode.json-language-features"
+  },
+  "editor.fontVariations": false,
+  "editor.inlayHints.fontFamily": "FiraCode-Retina",
+  "eslint.lintTask.enable": true,
+  "eslint.codeAction.showDocumentation": {
+    "enable": true
+  },
+  "sonarlint.disableTelemetry": true,
+  "git.autofetch": true,
+  "terminal.integrated.fontFamily": "monospace",
+  "files.associations": {
+    "*.js": "javascriptreact"
+  }
+}

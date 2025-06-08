@@ -1,10 +1,11 @@
 {
     "name": "Mohammad Ali",
-    "phone": "+962799220730",
-    "email": "moegts@gmail.com",
-    "supQuote": "You Don't know how much you don't know\"",
-    "quote": "\"Wisdom is a collection of Knowledge and Experience",
-    "socialTag": "moegts",
+    "phone": "+447893933992",
+    "email": "owner@aicentery.com",
+    "quote": "I'm currently exploring innovative ways to integrate AI agents into business workflows",
+    "supQuote": "If you're curious about what AI can do for your business, let's talk.",
+    "socialTag": "",
+    "linkedin": "https://www.linkedin.com/in/moegts/",
     "skills": [
         [
             "Devloper",
@@ -13,6 +14,11 @@
         [
             "Designer",
             "#008ec8"
+        ]
+        ,
+        [
+            "AI-Agents",
+            "green"
         ]
     ]
 }

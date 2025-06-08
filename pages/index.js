@@ -9,13 +9,14 @@ import profileInfo from '../public/personal/profile-info.json'
 // svg icons
 import phone from '../public/phone.svg'
 import email from '../public/email.svg'
+import linkedin from '../public/linkedin.svg'
 export default function Home() {
   return (
     <div className='grid   h-screen' >
       <div className="grid m-auto w-fit h-fit p-6 rounded-xl bg-[#2c2f33]">
-        <div className="grid md:grid-cols-[160px_1fr] md:gap-4 py-2  ">
+        <div className="grid md:grid-cols-[160px_1fr] md:gap-4 py-2">
           <div className="xsm:grid md:block">
-            <div className=" xsm:grid xsm:m-auto md:block rounded-full overflow-hidden border-4 shadow h-fit w-fit">
+            <div className=" xsm:grid xsm:m-auto md:block rounded-full overflow-hidden border-4 shadow h-fit w-fit translate duration-500 ease-in-out hover:scale-125">
               <Image
                 src={portoProfilePic}
                 alt="Picture of the author"
@@ -24,17 +25,24 @@ export default function Home() {
               />
             </div>
             <div className='flex flex-wrap justify-center gap-2 pt-2'>
-              <a href={`tel:${profileInfo.phone}`} className='flex items-center text-gray-200 hover:text-gray-300'>
+              <a href={`tel:${profileInfo.phone}`} className='translate duration-500 ease-in-out hover:scale-125 flex items-center text-gray-200 hover:text-gray-300'>
                 <span>
-                  <div className=" rounded-full p-[5px] border-2 border-green-400">
+                  <div className=" rounded-full p-[5px] border-2  border-green-400">
                     <Image src={phone} alt="phone icon" width={15} height={15} />
                   </div>
                 </span>
               </a>
               <span>
-                <a href={`mailto:${profileInfo.email}`} className='flex items-center text-gray-200 hover:text-gray-300'>
+                <a href={`mailto:${profileInfo.email}`} className='translate duration-500 ease-in-out hover:scale-125 flex items-center text-gray-200 hover:text-gray-300' rel="noreferrer">
                   <div className=" rounded-full p-[5px] border-2 border-blue-400">
                     <Image src={email} alt="email icon" width={15} height={15} />
+                  </div>
+                </a>
+              </span>
+              <span>
+                <a target='_blank' href={`${profileInfo.linkedin}`} className='translate duration-500 ease-in-out hover:scale-125 flex items-center text-gray-200 hover:text-gray-300' rel="noreferrer">
+                  <div className=" rounded-full p-[5px] border-2 border-blue-600">
+                    <Image src={linkedin}  alt="email icon" width={15} height={15} />
                   </div>
                 </a>
               </span>
@@ -45,7 +53,7 @@ export default function Home() {
             <div className="leading-relaxed">
 
               <div className="w-fit">
-                <p className='text-gray-300 text-right xsm:text-sm md:text-base'>@{profileInfo.socialTag}</p>
+                <p className='text-gray-300 text-right xsm:text-sm md:text-base'>{profileInfo.socialTag}</p>
                 <h1 className='xsm:text-3xl md:text-5xl'>{profileInfo.name}</h1>
               </div>
               <h2 className=' text-gray-200 md:text-[1.05rem] inline-block'>{profileInfo.quote}, {profileInfo.supQuote}</h2>
@@ -65,27 +73,6 @@ export default function Home() {
                 </span>
               </h3>
             </div>
-          </div>
-        </div>
-        {/* google image */}
-        <hr />
-        <GoogleSearch />
-        {/* go to link /tasklist */}
-        <div className="">
-          <h2 className='text-white'>
-            Here is a list of my Utilities and Tools that I Created
-          </h2>
-          <div className="bg-[#2c2f33] grid m-auto  w-full sm:grid-cols-2 md:grid-cols-4">
-            <Link href={"/tasklist"} >
-              <div className=" flex ">
-                <p className='text-white grid my-auto'>1.</p>
-                <svg xmlns="http://www.w3.org/2000/svg" className="h-8 w-8 text-white grid my-auto" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 6h16M4 12h16M4 18h16" />
-                </svg>
-                <br />
-                <p className='text-white grid my-auto'>TaskList</p>
-              </div>
-            </Link>
           </div>
         </div>
       </div>

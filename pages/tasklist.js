@@ -11,7 +11,6 @@ export default function Tasklist() {
     const [refreshState, setRefreshState] = useState(true)
     const [agentModal, setagentModal] = useState(false)
     const [tasksCount, setTasksCount] = useState({})
-
     const [ready, setReady] = useState(false)
     const handleCardModal = () => {
         setShowCardModal(!showCardModal)
@@ -23,7 +22,6 @@ export default function Tasklist() {
         await setRefreshState(false);
         await setRefreshState(true);
     }
-
     const addAgentToStorage = (Agent_name) => {
         const AgentName = document.getElementById(Agent_name).value
         const Agent = {
@@ -101,6 +99,7 @@ export default function Tasklist() {
         getCount()
     }
 
+
     const getCount = () => {
         let cards = JSON.parse(localStorage.getItem('cards'));
         let tasksCount = 0
@@ -130,7 +129,7 @@ export default function Tasklist() {
                 <title>Tasklist</title>
             </Head>
             <div className="h-[100vh] grid m-auto">
-                <div className='flex m-auto gap-2'>
+                <div className='flex m-auto gap-2 '>
                     <p className='m-0 bg-white p-2'>All Tasks{tasksCount.tasksCount}</p>
                     <p className='m-0 bg-white p-2'>Done Tasks{tasksCount.ArchiveCount}</p>
                     <p className='m-0 bg-white p-2'>Active Tasks{tasksCount.tasksCount - tasksCount.ArchiveCount}</p>
@@ -146,7 +145,7 @@ export default function Tasklist() {
                             <div className="">
                                 {
                                     agentModal && <>
-                                        <div className="absolute top-0 left-0 bg-[#ffffff50] w-full h-full"
+                                        <div className="absolute top-0 left-0 bg-[#ffffff50] w-full h-full "
                                             onClick={
                                                 () => {
                                                     setagentModal(false);
@@ -174,7 +173,7 @@ export default function Tasklist() {
 
                                                 </div>
                                             </div>
-                                            <button className='w-full bg-green-500 rounded p-1'
+                                            <button className='w-full bg-green-500 rounded p-1 '
                                                 onClick={
                                                     () => {
                                                         addAgentToStorage('Agent-name');
@@ -207,7 +206,7 @@ export default function Tasklist() {
                                                     console.log(activeCard);
                                                     setCurrentTasks(card.tasks)
                                                 }}
-                                                className={`w-full flex gap-4 px-2 py-1  
+                                                className={`w-full flex gap-4 px-2 py-1
                                                 ${activeCard === card.id ? 'outline-green-500 outline-2 outline outline-offset-2 bg-green-500 text-white hover:text-black ' : 'bg-[#fff]'}
                                                 rounded relative cursor-pointer hover:bg-slate-300 group`}>
                                                 <p className=''>
@@ -261,7 +260,7 @@ export default function Tasklist() {
                                                                 }
                                                             }
                                                         }}>
-                                                            <p className='text-white'>-</p>
+                                                            <p className='text-white '>-</p>
                                                         </button>
 
                                                     </div>
